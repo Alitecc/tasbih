@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Tasbih" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Tasbih</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Digital Tasbih">
+    <script>
+        // Register service worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container nextjs-style">
+        <header class="tasbih-header nextjs-header">
+            <h1><span class="nextjs-logo">●</span> Digital Tasbih</h1>
+            <p class="subtitle">A minimal, fast, and accessible Tasbih counter</p>
+        </header>
+        <main class="tasbih-main nextjs-main">
+            <div class="counter-card nextjs-card">
+                <button id="count-btn" class="counter-circle nextjs-circle nextjs-count-btn" aria-label="Count">
+                    <span id="count">0</span>
+                    <span class="count-arrow" aria-hidden="true"></span>
+                </button>
+                <div class="counter-actions nextjs-actions">
+                    <button id="reset-btn" class="secondary-btn nextjs-btn" aria-label="Reset">Reset</button>
+                </div>
+            </div>
+        </main>        <footer class="tasbih-footer nextjs-footer">
+            <div class="theme-toggle nextjs-theme-toggle">
+                <button class="theme-btn nextjs-theme-btn" id="light-theme">☀️</button>
+                <button class="theme-btn nextjs-theme-btn" id="dark-theme">🌙</button>
+            </div>
+            <button class="info-btn nextjs-btn" id="info-btn" aria-label="Bildnachweise">ⓘ</button>
+        </footer>
+    </div>
+
+    <!-- Info Modal -->
+    <div id="info-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content nextjs-modal">
+            <div class="modal-header">
+                <h2>Bildnachweise</h2>
+                <button class="modal-close" id="modal-close" aria-label="Schließen">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Add your image credits/tags here -->
+                <a href="https://www.flaticon.com/free-icons/arrows" title="arrows icons">Arrows icons created by Arslan Haider - Flaticon</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
