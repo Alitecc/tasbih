@@ -140,7 +140,7 @@ body {
 }
 .nextjs-count-btn {
     width: 100%;
-    height: 100%;
+    height: 180px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%), url("img/right.png");
     background-size: cover, 45px 45px;
     background-repeat: no-repeat, no-repeat;
