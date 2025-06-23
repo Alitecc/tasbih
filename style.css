@@ -458,7 +458,7 @@ body.dark .credits-content strong {
     }
     
     .nextjs-count-btn {
-        width: 200px;
+        width: 100%;
         height: 200px;
         font-size: 1.8rem;
         margin: 0.3rem auto;
