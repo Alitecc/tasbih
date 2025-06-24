@@ -165,11 +165,13 @@ function setTheme(theme) {
         localStorage.setItem('tasbih-theme', 'dark');
         darkThemeBtn.classList.add('active');
         lightThemeBtn.classList.remove('active');
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#1a1a2e");
     } else {
         document.body.classList.remove('dark');
         localStorage.setItem('tasbih-theme', 'light');
         lightThemeBtn.classList.add('active');
         darkThemeBtn.classList.remove('active');
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#667eea");
     }
 }
 

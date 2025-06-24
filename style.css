@@ -59,7 +59,7 @@ html {
   overflow: hidden;
 }
 body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #667eea;
     min-height: 100svh;
     padding: 1rem;
     box-sizing: border-box;
@@ -264,9 +264,6 @@ body:not(.dark) .nextjs-theme-btn#light-theme svg {
 }
 body:not(.dark) .nextjs-theme-btn#dark-theme svg {
     fill: #222;
-}
-body:not(.dark) .nextjs-theme-btn#info-btn svg {
-    fill: url(#MyGradientDark);
 }
 .nextjs-footer {
     margin-top: 0.5rem;
@@ -582,7 +579,7 @@ body.dark .credits-content strong {
     }
 }
 body.dark {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    background: #16213e;
 }
 body.dark .nextjs-style {
     background: rgba(26, 26, 46, 0.3);
