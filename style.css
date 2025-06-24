@@ -80,7 +80,7 @@ body {
     padding: 1.5rem;
     max-width: 420px;
     width: calc(100vw - 2rem);
-    height: calc(100vh - 2rem);
+    height: calc(100svh - 2rem);
     max-height: 750px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     display: flex;
@@ -141,7 +141,7 @@ body {
 .nextjs-count-btn {
     width: 100%;
     height: 180px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%), url("img/right.png");
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
     background-size: cover, 45px 45px;
     background-repeat: no-repeat, no-repeat;
     background-position: center, center bottom 15%;
@@ -165,8 +165,12 @@ body {
     user-select: none;
     padding-bottom: 12px;
 }
+
+body.dark #count-btn svg {
+    fill: #1a1a2e !important;
+}
 .nextjs-count-btn:active {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.5) 100%), url("img/right.png");
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.5) 100%);
     background-size: cover, 45px 45px;
     background-repeat: no-repeat, no-repeat;
     background-position: center, center bottom 15%;
@@ -176,7 +180,7 @@ body {
     transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .nextjs-count-btn:hover {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 100%), url("img/right.png");
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 100%);
     background-size: cover, 45px 45px;
     background-repeat: no-repeat, no-repeat;
     background-position: center, center bottom 15%;
@@ -198,9 +202,14 @@ body {
 }
 .nextjs-actions {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
     width: 100%;
     justify-content: center;
+}
+.actions-container {
+    display: flex;
+    gap: 1rem;
 }
 .nextjs-btn {
     background: rgba(255, 255, 255, 0.2);
@@ -242,10 +251,25 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 2px 8px rgba(31, 38, 135, 0.2);
 }
+.nextjs-theme-btn.active {
+    box-shadow: 0 12px 32px rgba(255, 255, 255, 0.3), 0 2px 8px rgba(255, 255, 255, 0.2) !important;
+}
 .nextjs-theme-btn.active, .nextjs-theme-btn:hover {
     background: rgba(255, 255, 255, 1);
     transform: translateY(-1px);
     box-shadow: 0 4px 16px rgba(31, 38, 135, 0.25);
+}
+body:not(.dark) .nextjs-theme-btn#light-theme svg {
+    stroke: #222;
+}
+body:not(.dark) .nextjs-theme-btn#dark-theme svg {
+    fill: #222;
+}
+body:not(.dark) .nextjs-theme-btn#info-btn svg {
+    fill: white;
+}
+body:not(.dark) .nextjs-theme-btn#info-btn:hover svg {
+    fill: #222;
 }
 .nextjs-footer {
     margin-top: 0.5rem;
@@ -573,7 +597,7 @@ body.dark .nextjs-card {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 body.dark .nextjs-count-btn {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 100%), url("img/right.png");
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 100%);
     background-size: cover, 45px 45px;
     background-repeat: no-repeat, no-repeat;
     background-position: center, center bottom 15%;
@@ -581,7 +605,7 @@ body.dark .nextjs-count-btn {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 body.dark .nextjs-count-btn:hover {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%), url("img/right.png");
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
     background-size: cover, 45px 45px;
     background-repeat: no-repeat, no-repeat;
     background-position: center, center bottom 15%;
@@ -589,7 +613,7 @@ body.dark .nextjs-count-btn:hover {
     transform: translateY(0px);
 }
 body.dark .nextjs-count-btn:active {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%), url("img/right.png");
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
     background-size: cover, 45px 45px;
     background-repeat: no-repeat, no-repeat;
     background-position: center, center bottom 15%;
@@ -642,4 +666,130 @@ body.dark .nextjs-count-btn #count {
 /* Megazoom mode - 300px font size on all screens */
 .megazoom .nextjs-count-btn #count {
     font-size: 350px !important;
+}
+#megazoom-btn {
+    overflow: hidden;
+    width: 100%;
+}
+#megazoom-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+#megazoom-btn:hover::before {
+    left: 100%;
+}
+#megazoom-btn {
+    background: linear-gradient(135deg, rgba(107, 255, 107, 0.2) 0%, rgba(159, 255, 159, 0.15) 100%) !important;
+    border: 1px solid rgba(107, 255, 107, 0.3) !important;
+}
+#megazoom-btn:hover {
+    background: linear-gradient(135deg, rgba(107, 255, 107, 0.3) 0%, rgba(159, 255, 159, 0.25) 100%) !important;
+    border-color: rgba(107, 255, 107, 0.5) !important;
+    box-shadow: 0 12px 32px rgba(107, 255, 107, 0.3), 0 2px 8px rgba(107, 255, 107, 0.2) !important;
+}
+#megazoom-btn p {
+    position: absolute;
+    left: -4px;
+    right: -4px;
+    top: -4px;
+    bottom: -4px;
+}
+/* Premium -1 Button Styling (awwwards level) */
+.decrement-btn {
+    position: relative;
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.2) 0%, rgba(255, 159, 159, 0.15) 100%) !important;
+    border: 1px solid rgba(255, 107, 107, 0.3) !important;
+    overflow: hidden;
+    min-width: 60px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
+}
+
+.decrement-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.3) 0%, rgba(255, 159, 159, 0.25) 100%) !important;
+    border-color: rgba(255, 107, 107, 0.5) !important;
+    transform: translateY(-3px) scale(1.02) !important;
+}
+
+.decrement-btn:active {
+    transform: translateY(-1px) scale(0.98) !important;
+    box-shadow: 0 4px 16px rgba(255, 107, 107, 0.4) !important;
+}
+
+.btn-icon {
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1;
+    opacity: 0.9;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.8;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.decrement-btn:hover .btn-icon {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.decrement-btn:hover .btn-text {
+    opacity: 1;
+    transform: translateX(1px);
+}
+
+/* Dark theme for decrement button */
+body.dark .decrement-btn {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.15) 0%, rgba(255, 159, 159, 0.1) 100%) !important;
+    border: 1px solid rgba(255, 107, 107, 0.25) !important;
+}
+
+body.dark .decrement-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.25) 0%, rgba(255, 159, 159, 0.2) 100%) !important;
+    border-color: rgba(255, 107, 107, 0.4) !important;
+    box-shadow: 0 12px 32px rgba(255, 107, 107, 0.25), 0 2px 8px rgba(255, 107, 107, 0.15) !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 600px) {
+    .decrement-btn {
+        min-width: 50px;
+        font-size: 0.85rem;
+        padding: 0.7rem 0.8rem !important;
+    }
+    
+    .btn-icon {
+        font-size: 1.2rem;
+    }
+    
+    .btn-text {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .decrement-btn {
+        min-width: 45px;
+        padding: 0.6rem 0.7rem !important;
+    }
+    
+    .btn-icon {
+        font-size: 1.1rem;
+    }
+    
+    .btn-text {
+        font-size: 0.75rem;
+    }
 }
