@@ -80,8 +80,8 @@ body {
     padding: 1.5rem;
     max-width: 420px;
     width: calc(100vw - 2rem);
-    min-height: calc(100vh - 2rem);
-    max-height: calc(100vh - 2rem);
+    height: calc(100vh - 2rem);
+    max-height: 750px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     display: flex;
     flex-direction: column;
@@ -217,6 +217,7 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    flex: 1;
 }
 .nextjs-btn:active {
     background: rgba(255, 255, 255, 0.1);
@@ -232,7 +233,7 @@ body {
     padding: 0.6rem 1.2rem;
     border-radius: 1.5rem;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     color: #fff;
     font-weight: 600;
@@ -242,7 +243,7 @@ body {
     box-shadow: 0 2px 8px rgba(31, 38, 135, 0.2);
 }
 .nextjs-theme-btn.active, .nextjs-theme-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 1);
     transform: translateY(-1px);
     box-shadow: 0 4px 16px rgba(31, 38, 135, 0.25);
 }
@@ -266,10 +267,8 @@ body {
 
 /* Info Button */
 .info-btn {
-    padding: 0.5rem 0.8rem;
     font-size: 1.2rem;
     min-width: auto;
-    width: 46.2px;
 }
 
 /* Modal Styles */
@@ -401,6 +400,14 @@ body.dark .modal-body p {
     color: #ddd;
 }
 
+body.dark .modal-body {
+    color: #ddd;
+}
+
+body.dark .modal-body a {
+    color: #8bb7f0;
+}
+
 body.dark .credits-content {
     background: rgba(22, 33, 62, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -444,8 +451,6 @@ body.dark .credits-content strong {
     .nextjs-style {
         padding: 1rem;
         width: calc(100vw - 1rem);
-        min-height: calc(100vh - 1rem);
-        max-height: calc(100vh - 1rem);
         gap: 0.8rem;
         border-radius: 1.5rem;
     }
@@ -467,7 +472,6 @@ body.dark .credits-content strong {
     }
     
     .nextjs-count-btn #count {
-        font-size: 2rem;
         top: -6px;
     }
     
@@ -517,8 +521,6 @@ body.dark .credits-content strong {
     .nextjs-style {
         padding: 0.8rem;
         width: calc(100vw - 0.6rem);
-        min-height: calc(100vh - 0.6rem);
-        max-height: calc(100vh - 0.6rem);
         gap: 0.6rem;
         border-radius: 1.2rem;
     }
@@ -529,7 +531,7 @@ body.dark .credits-content strong {
     }
     
     .nextjs-count-btn {
-        width: 160px;
+        width: 100%;
         height: 160px;
         margin: 0.2rem auto;
         background-size: cover, 25px 25px !important;
@@ -537,7 +539,6 @@ body.dark .credits-content strong {
     }
     
     .nextjs-count-btn #count {
-        font-size: 1.8rem;
         top: -5px;
     }
     
@@ -636,4 +637,9 @@ body.dark .nextjs-count-btn #count {
 
 .count-highlight {
     animation: count-tap 0.6s ease-in-out;
+}
+
+/* Megazoom mode - 300px font size on all screens */
+.megazoom .nextjs-count-btn #count {
+    font-size: 350px !important;
 }

@@ -148,4 +148,46 @@ darkThemeBtn.addEventListener('click', () => setTheme('dark'));
 window.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('tasbih-theme') || 'light';
     setTheme(savedTheme);
+    
+    // Restore megazoom state
+    const savedMegazoom = localStorage.getItem('tasbih-megazoom') === 'true';
+    if (savedMegazoom) {
+        toggleMegazoom();
+    }
+});
+
+// Megazoom functionality
+const megazoomBtn = document.getElementById('megazoom-btn');
+let megazoomActive = false;
+
+const toggleMegazoom = () => {
+    megazoomActive = !megazoomActive;
+    const container = document.querySelector('.nextjs-style');
+    
+    if (megazoomActive) {
+        container.classList.add('megazoom');
+        megazoomBtn.textContent = 'Normal';
+        localStorage.setItem('tasbih-megazoom', 'true');
+    } else {
+        container.classList.remove('megazoom');
+        megazoomBtn.textContent = 'DramaZoom';
+        localStorage.setItem('tasbih-megazoom', 'false');
+    }
+    vibrate();
+};
+
+megazoomBtn.addEventListener('click', toggleMegazoom);
+
+// On load, set megazoom state from localStorage
+window.addEventListener('DOMContentLoaded', () => {
+    const savedMegazoom = localStorage.getItem('tasbih-megazoom') === 'true';
+    megazoomActive = savedMegazoom;
+    const container = document.querySelector('.nextjs-style');
+    if (megazoomActive) {
+        container.classList.add('megazoom');
+        megazoomBtn.textContent = 'Normal';
+    } else {
+        container.classList.remove('megazoom');
+        megazoomBtn.textContent = 'DramaZoom';
+    }
 });

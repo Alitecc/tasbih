@@ -1,6 +1,6 @@
 {
-  "name": "DIGITasbih",
-  "short_name": "Tasbih",
+  "name": "Digital Tasbih",
+  "short_name": "DigiTasbih",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",

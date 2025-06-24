@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="/tasbih/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/tasbih/favicon.svg" />
-    <link rel="shortcut icon" href="/tasbih/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/tasbih/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="Tasbih" />
-    <link rel="manifest" href="/tasbih/site.webmanifest" />
+    <link rel="manifest" href="site.webmanifest" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Digital Tasbih</title>
@@ -37,18 +37,30 @@
             <p class="subtitle">A minimal, fast, and accessible Tasbih counter</p>
         </header>
         <main class="tasbih-main nextjs-main">
-            <div class="counter-card nextjs-card">                <button id="count-btn" class="counter-circle nextjs-circle nextjs-count-btn" aria-label="Count">
+            <div class="counter-card nextjs-card">                
+                <button id="count-btn" class="counter-circle nextjs-circle nextjs-count-btn" aria-label="Count">
                     <span id="count">0</span>
-                </button>
+                </button>                
                 <div class="counter-actions nextjs-actions">
                     <button id="reset-btn" class="secondary-btn nextjs-btn" aria-label="Reset">Reset</button>
+                    <button id="megazoom-btn" class="secondary-btn nextjs-btn" aria-label="DramaZoom">DramaZoom</button>
                 </div>
             </div>
         </main>        <footer class="tasbih-footer nextjs-footer">
             <div class="theme-toggle nextjs-theme-toggle">
-                <button class="theme-btn nextjs-theme-btn" id="light-theme">☀️</button>
-                <button class="theme-btn nextjs-theme-btn" id="dark-theme">🌙</button>
-                <button class="info-btn nextjs-theme-btn" id="info-btn" aria-label="Bildnachweise">ⓘ</button>
+                <button class="theme-btn nextjs-theme-btn" id="light-theme">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32px" height="32px" viewBox="0 0 24 24">
+                        <path d="M 11 0 L 11 3 L 13 3 L 13 0 L 11 0 z M 4.2226562 2.8085938 L 2.8085938 4.2226562 L 4.9296875 6.34375 L 6.34375 4.9296875 L 4.2226562 2.8085938 z M 19.777344 2.8085938 L 17.65625 4.9296875 L 19.070312 6.34375 L 21.191406 4.2226562 L 19.777344 2.8085938 z M 12 5 C 8.1456661 5 5 8.1456661 5 12 C 5 14.767788 6.6561188 17.102239 9 18.234375 L 9 21 C 9 22.093063 9.9069372 23 11 23 L 13 23 C 14.093063 23 15 22.093063 15 21 L 15 18.234375 C 17.343881 17.102239 19 14.767788 19 12 C 19 8.1456661 15.854334 5 12 5 z M 12 7 C 14.773666 7 17 9.2263339 17 12 C 17 14.184344 15.605334 16.022854 13.666016 16.708984 L 13 16.943359 L 13 21 L 11 21 L 11 16.943359 L 10.333984 16.708984 C 8.3946664 16.022854 7 14.184344 7 12 C 7 9.2263339 9.2263339 7 12 7 z M 0 11 L 0 13 L 3 13 L 3 11 L 0 11 z M 21 11 L 21 13 L 24 13 L 24 11 L 21 11 z M 4.9296875 17.65625 L 2.8085938 19.777344 L 4.2226562 21.191406 L 6.34375 19.070312 L 4.9296875 17.65625 z M 19.070312 17.65625 L 17.65625 19.070312 L 19.777344 21.191406 L 21.191406 19.777344 L 19.070312 17.65625 z"></path>
+                    </svg>
+                </button>
+                <button class="theme-btn nextjs-theme-btn" id="dark-theme">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32px" height="32px" viewBox="0 0 48 48">
+                        <path d="M16.415 31.906L16.88 34h14.24l.465-2.094c.315-1.417.988-2.752 2.041-3.751C36.395 25.53 38 21.864 38 18c0-7.718-6.283-13.975-14-13.978C16.283 4.025 10 10.282 10 18c0 3.864 1.605 7.53 4.373 10.155C15.427 29.154 16.1 30.489 16.415 31.906zM17.547 37l.946 4.259C18.849 42.861 20.27 44 21.91 44h4.18c1.64 0 3.061-1.139 3.417-2.741L30.453 37H17.547z"></path>
+                    </svg>
+                </button>
+                <button class="info-btn nextjs-theme-btn" id="info-btn" aria-label="Bildnachweise">
+                    <img src="img/information-button.png" alt="Info Icon" width="32" height="32">
+                </button>
             </div>
         </footer>
     </div>
@@ -62,7 +74,9 @@
             </div>
             <div class="modal-body">
                 <!-- Add your image credits/tags here -->
-                <a href="https://www.flaticon.com/free-icons/arrows" title="arrows icons">Arrows icons created by Arslan Haider - Flaticon</a>
+                <a href="https://www.flaticon.com/free-icons/info" title="info icon">Info icon created by Freepik - Flaticon</a>
+                <p>Icons by <a target="_blank" href="https://icons8.com">Icons8</a></p>
+                <p><a target="_blank" href="https://www.flaticon.com/free-icons/arrows" title="arrows icon">Arrows icon created by Arslan Haider - Flaticon</a></p>
             </div>
         </div>
     </div>
