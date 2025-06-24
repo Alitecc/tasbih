@@ -265,6 +265,9 @@ body:not(.dark) .nextjs-theme-btn#light-theme svg {
 body:not(.dark) .nextjs-theme-btn#dark-theme svg {
     fill: #222;
 }
+body:not(.dark) .nextjs-theme-btn#info-btn svg {
+    fill: url(#MyGradientDark);
+}
 .nextjs-footer {
     margin-top: 0.5rem;
     text-align: center;
