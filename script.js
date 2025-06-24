@@ -44,6 +44,28 @@ const incrementCount = () => {
     updateDisplay();
 };
 
+// Decrement function for -1 button
+const decrementCount = () => {
+    const now = Date.now();
+    if (now - lastCountTime < countDebounceDelay) {
+        return;
+    }
+    lastCountTime = now;
+    
+    if (count > 0) {
+        count--;
+        vibrate();
+        updateDisplay();
+        
+        // Add premium visual feedback
+        const decrementBtn = document.getElementById('decrement-btn');
+        decrementBtn.style.transform = 'translateY(-1px) scale(0.95)';
+        setTimeout(() => {
+            decrementBtn.style.transform = '';
+        }, 150);
+    }
+};
+
 // Enhanced mobile-friendly counting
 let isCountingInProgress = false;
 
@@ -79,6 +101,13 @@ resetBtn.addEventListener('click', (e) => {
     updateDisplay();
 });
 
+// Decrement button event listener
+const decrementBtn = document.getElementById('decrement-btn');
+decrementBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    decrementCount();
+});
+
 // Add keyboard support with improved counting
 document.addEventListener('keydown', (e) => {
     if (e.code === 'Space') {
@@ -89,6 +118,9 @@ document.addEventListener('keydown', (e) => {
         count = 0;
         vibrate();
         updateDisplay();
+    } else if (e.code === 'Minus' || e.code === 'NumpadSubtract') {
+        e.preventDefault();
+        decrementCount();
     }
 });
 
