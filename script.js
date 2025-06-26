@@ -2,8 +2,7 @@ let count = 0;
 const countDisplay = document.getElementById('count');
 const countBtn = document.getElementById('count-btn');
 const resetBtn = document.getElementById('reset-btn');
-const lightThemeBtn = document.getElementById('light-theme');
-const darkThemeBtn = document.getElementById('dark-theme');
+const themeToggle = document.getElementById('theme-toggle');
 
 // Add vibration feedback if available
 const vibrate = () => {
@@ -163,20 +162,21 @@ function setTheme(theme) {
     if (theme === 'dark') {
         document.body.classList.add('dark');
         localStorage.setItem('tasbih-theme', 'dark');
-        darkThemeBtn.classList.add('active');
-        lightThemeBtn.classList.remove('active');
+        themeToggle.checked = true;
         document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#16213e");
     } else {
         document.body.classList.remove('dark');
         localStorage.setItem('tasbih-theme', 'light');
-        lightThemeBtn.classList.add('active');
-        darkThemeBtn.classList.remove('active');
+        themeToggle.checked = false;
         document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#667eea");
     }
 }
 
-lightThemeBtn.addEventListener('click', () => setTheme('light'));
-darkThemeBtn.addEventListener('click', () => setTheme('dark'));
+themeToggle.addEventListener('change', () => {
+    const theme = themeToggle.checked ? 'dark' : 'light';
+    setTheme(theme);
+    vibrate();
+});
 
 // On load, set theme from localStorage
 window.addEventListener('DOMContentLoaded', () => {
