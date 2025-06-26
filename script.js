@@ -165,7 +165,7 @@ function setTheme(theme) {
         localStorage.setItem('tasbih-theme', 'dark');
         darkThemeBtn.classList.add('active');
         lightThemeBtn.classList.remove('active');
-        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#1a1a2e");
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#16213e");
     } else {
         document.body.classList.remove('dark');
         localStorage.setItem('tasbih-theme', 'light');
@@ -225,3 +225,77 @@ window.addEventListener('DOMContentLoaded', () => {
         megazoomBtn.textContent = 'DramaZoom';
     }
 });
+
+    /*
+// Flash Therapy functionality
+const initFlashTherapy = () => {
+    // Create flash element if it doesn't exist
+    let flashElement = document.querySelector('.flash');
+    if (!flashElement) {
+        flashElement = document.createElement('div');
+        flashElement.className = 'flash';
+        flashElement.style.position = 'fixed';
+        flashElement.style.top = '0';
+        flashElement.style.left = '0';
+        flashElement.style.right = '0';
+        flashElement.style.bottom = '0';
+        flashElement.style.backgroundColor = 'white';
+        flashElement.style.zIndex = '9999';
+        flashElement.style.pointerEvents = 'none';
+        flashElement.style.display = 'none';
+        document.body.appendChild(flashElement);
+    }
+    // Enable flash on count with .01% probability
+    const randomFlash = () => {
+        if (Math.random() < 1 || count % 100 === 0) { // Rare random flash or every 100 counts
+            flashElement.style.display = '';
+            flashElement.style.opacity = '1';
+            
+            // Animation sequence
+            setTimeout(() => {
+                flashElement.style.opacity = '0.33265';
+                
+                setTimeout(() => {
+                    flashElement.style.transition = 'opacity 25ms';
+                    flashElement.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        flashElement.style.display = 'none';
+                        flashElement.style.opacity = '1';
+                        flashElement.style.transition = '';
+                    }, 25);
+                }, 50);
+            }, 0);
+        }
+    };
+    
+    // Add flash trigger to counting action
+    const originalIncrementCount = incrementCount;
+    incrementCount = function() {
+        originalIncrementCount();
+        randomFlash();
+        console.log('Flash therapy triggered');
+    };
+    
+    // Add flash therapy toggle in settings
+    const settingsSection = document.querySelector('.settings') || infoModal;
+    if (settingsSection) {
+        const flashToggle = document.createElement('button');
+        flashToggle.id = 'flash-toggle';
+        flashToggle.className = 'theme-btn';
+        flashToggle.textContent = 'Flash Therapy: ON';
+        flashToggle.addEventListener('click', () => {
+            const isOn = flashToggle.textContent.includes('ON');
+            flashToggle.textContent = isOn ? 'Flash Therapy: OFF' : 'Flash Therapy: ON';
+            localStorage.setItem('tasbih-flash-therapy', !isOn);
+        });
+        settingsSection.appendChild(flashToggle);
+        
+        // Set initial state from localStorage
+        const flashEnabled = localStorage.getItem('tasbih-flash-therapy') !== 'false';
+        flashToggle.textContent = flashEnabled ? 'Flash Therapy: ON' : 'Flash Therapy: OFF';
+    }
+};
+
+// Initialize flash therapy when DOM content is loaded
+document.addEventListener('DOMContentLoaded', initFlashTherapy); */
