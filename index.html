@@ -1,22 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
-    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Tasbih" />
-    <link rel="manifest" href="site.webmanifest" />
+    <title>Digital Tasbih - Dhikr Counter</title>
+    <meta name="description" content="A beautiful, fast, and accessible Islamic dhikr counter. Keep track of your remembrance of Allah ﷻ with dark mode and DramaZoom.">
+    <meta name="keywords" content="tasbih, dhikr, counter, islamic, muslim, prayer, remembrance, allah">
+    <meta name="author" content="Your Name or Organization">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Digital Tasbih - Dhikr Counter">
+    <meta property="og:description" content="A beautiful, fast, and accessible Islamic dhikr counter. Keep track of your remembrance of Allah ﷻ with dark mode and DramaZoom.">
+    <meta property="og:image" content="https://your-website.com/web-app-manifest-512x512.png">
+    <meta property="og:url" content="https://your-website.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Digital Tasbih - Dhikr Counter">
+    <meta name="twitter:description" content="A beautiful, fast, and accessible Islamic dhikr counter. Keep track of your remembrance of Allah ﷻ with dark mode and DramaZoom.">
+    <meta name="twitter:image" content="https://your-website.com/web-app-manifest-512x512.png">
+    <link rel="canonical" href="https://your-website.com">
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="apple-mobile-web-app-title" content="Tasbih">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Digital Tasbih - A minimal, fast, and accessible Islamic dhikr counter. Count your remembrance of Allah ﷻ with this beautiful web app featuring dark mode and DramaZoom functionality.">
-    <title>Digital Tasbih</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Digital Tasbih">
-    <meta name="theme-color"></meta>
+    <meta name="theme-color" content="#4facfe">
     <script>
         // Register service worker for PWA
         if ('serviceWorker' in navigator) {
@@ -39,14 +48,14 @@
             <p class="subtitle">A minimal, fast, and accessible Tasbih counter</p>
         </header>
         <main class="tasbih-main nextjs-main">
-            <div class="counter-card nextjs-card">                
-                <button id="count-btn" class="counter-circle nextjs-circle nextjs-count-btn" aria-label="Count">
-                    <span id="count">0</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6" style="position: absolute;bottom: 0;left: 0;width: 100%;height: 100%;fill: #dfdfdf;">
+            <div class="counter-card nextjs-card">
+                <button id="count-btn" class="counter-circle nextjs-circle nextjs-count-btn" aria-label="Increment Count">
+                    <span id="count" aria-live="polite">0</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6" style="position: absolute;bottom: 0;left: 0;width: 100%;height: 100%;fill: #dfdfdf;" aria-hidden="true">
                         <path fill-rule="evenodd" d="M11.47 10.72a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 1 1-1.06 1.06L12 12.31l-6.97 6.97a.75.75 0 0 1-1.06-1.06l7.5-7.5Z" clip-rule="evenodd" />
                         <path fill-rule="evenodd" d="M11.47 4.72a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 1 1-1.06 1.06L12 6.31l-6.97 6.97a.75.75 0 0 1-1.06-1.06l7.5-7.5Z" clip-rule="evenodd" />
                     </svg>
-                </button>                  
+                </button>
                 <div class="counter-actions nextjs-actions">
                     <div class="actions-container">
                         <button id="decrement-btn" class="secondary-btn nextjs-btn decrement-btn" aria-label="Decrease count">
