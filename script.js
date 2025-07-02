@@ -41,6 +41,9 @@ const incrementCount = () => {
     count++;
     vibrate();
     updateDisplay();
+    
+    // Trigger flash therapy if active
+    triggerFlash();
 };
 
 // Decrement function for -1 button
@@ -168,7 +171,7 @@ function setTheme(theme) {
         document.body.classList.remove('dark');
         localStorage.setItem('tasbih-theme', 'light');
         themeToggle.checked = false;
-        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#667eea");
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#f8fafc");
     }
 }
 
@@ -187,6 +190,12 @@ window.addEventListener('DOMContentLoaded', () => {
     const savedMegazoom = localStorage.getItem('tasbih-megazoom') === 'true';
     if (savedMegazoom) {
         toggleMegazoom();
+    }
+    
+    // Restore flash therapy state
+    const savedFlashTherapy = localStorage.getItem('tasbih-flash-therapy') === 'true';
+    if (savedFlashTherapy) {
+        toggleFlashTherapy();
     }
 });
 
@@ -212,7 +221,61 @@ const toggleMegazoom = () => {
 
 megazoomBtn.addEventListener('click', toggleMegazoom);
 
-// On load, set megazoom state from localStorage
+// Flash Therapy functionality
+const flashTherapyBtn = document.getElementById('flash-therapy-btn');
+let flashTherapyActive = false;
+let flashOverlay = null;
+
+// Create flash overlay element
+const createFlashOverlay = () => {
+    if (!flashOverlay) {
+        flashOverlay = document.createElement('div');
+        flashOverlay.className = 'flash-overlay';
+        
+        // Create and configure the image element
+        const flashImg = document.createElement('img');
+        flashImg.src = 'img/Allah.jpg';
+        flashImg.alt = 'Flash Effect';
+        flashImg.className = 'flash-overlay-img';
+        
+        flashOverlay.appendChild(flashImg);
+        document.body.appendChild(flashOverlay);
+    }
+};
+
+// Flash effect function
+const triggerFlash = () => {
+    if (!flashTherapyActive || !flashOverlay) return;
+    
+    // Add flash effect
+    flashOverlay.classList.add('flash-active');
+    
+    // Remove flash effect after brief moment
+    setTimeout(() => {
+        flashOverlay.classList.remove('flash-active');
+    }, 120); // 120ms flash duration for optimal visual impact
+};
+
+// Toggle flash therapy
+const toggleFlashTherapy = () => {
+    flashTherapyActive = !flashTherapyActive;
+    
+    if (flashTherapyActive) {
+        createFlashOverlay();
+        flashTherapyBtn.classList.add('active');
+        flashTherapyBtn.textContent = 'Flash ON';
+        localStorage.setItem('tasbih-flash-therapy', 'true');
+    } else {
+        flashTherapyBtn.classList.remove('active');
+        flashTherapyBtn.textContent = 'Flash';
+        localStorage.setItem('tasbih-flash-therapy', 'false');
+    }
+    vibrate();
+};
+
+flashTherapyBtn.addEventListener('click', toggleFlashTherapy);
+
+// On load, set megazoom and flash therapy state from localStorage
 window.addEventListener('DOMContentLoaded', () => {
     const savedMegazoom = localStorage.getItem('tasbih-megazoom') === 'true';
     megazoomActive = savedMegazoom;
@@ -223,6 +286,17 @@ window.addEventListener('DOMContentLoaded', () => {
     } else {
         container.classList.remove('megazoom');
         megazoomBtn.textContent = 'DramaZoom';
+    }
+    
+    // Set flash therapy state
+    const savedFlashTherapy = localStorage.getItem('tasbih-flash-therapy') === 'true';
+    flashTherapyActive = savedFlashTherapy;
+    if (flashTherapyActive) {
+        createFlashOverlay();
+        flashTherapyBtn.classList.add('active');
+        flashTherapyBtn.textContent = 'Flash ON';
+    } else {
+        flashTherapyBtn.textContent = 'Flash';
     }
 });
 
