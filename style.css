@@ -474,13 +474,13 @@ body.dark .credits-content strong {
         padding: 1rem;
         width: calc(100vw - 1rem);
         gap: 0.8rem;
-        border-radius: 1.5rem;
+        border-radius: 4px;
     }
     
     .nextjs-card {
         padding: 1rem 0.8rem;
         gap: 0.8rem;
-        border-radius: 1.5rem;
+        border-radius: 4px;
     }
     
     .nextjs-count-btn {
@@ -544,7 +544,7 @@ body.dark .credits-content strong {
         padding: 0.8rem;
         width: calc(100vw - 0.6rem);
         gap: 0.6rem;
-        border-radius: 1.2rem;
+        border-radius: 4px;
     }
     
     .nextjs-card {
