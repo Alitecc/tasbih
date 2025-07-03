@@ -234,7 +234,7 @@ const createFlashOverlay = () => {
         
         // Create and configure the image element
         const flashImg = document.createElement('img');
-        flashImg.src = 'img/IMG_2163.png';
+        flashImg.src = 'img/Allah.jpg';
         flashImg.alt = 'Flash Effect';
         flashImg.className = 'flash-overlay-img';
         
@@ -263,11 +263,11 @@ const toggleFlashTherapy = () => {
     if (flashTherapyActive) {
         createFlashOverlay();
         flashTherapyBtn.classList.add('active');
-        flashTherapyBtn.textContent = 'Flash ON';
+        flashTherapyBtn.textContent = 'Flash-Cure ON';
         localStorage.setItem('tasbih-flash-therapy', 'true');
     } else {
         flashTherapyBtn.classList.remove('active');
-        flashTherapyBtn.textContent = 'Flash';
+        flashTherapyBtn.textContent = 'Flash-Cure';
         localStorage.setItem('tasbih-flash-therapy', 'false');
     }
     vibrate();
@@ -294,9 +294,9 @@ window.addEventListener('DOMContentLoaded', () => {
     if (flashTherapyActive) {
         createFlashOverlay();
         flashTherapyBtn.classList.add('active');
-        flashTherapyBtn.textContent = 'Flash ON';
+        flashTherapyBtn.textContent = 'Flash-Cure ON';
     } else {
-        flashTherapyBtn.textContent = 'Flash';
+        flashTherapyBtn.textContent = 'Flash-Cure';
     }
 });
 
