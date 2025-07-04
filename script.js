@@ -234,7 +234,7 @@ const createFlashOverlay = () => {
         
         // Create and configure the image element
         const flashImg = document.createElement('img');
-        flashImg.src = 'img/Allah.jpg';
+        flashImg.src = 'img/IMG_2163.png';
         flashImg.alt = 'Flash Effect';
         flashImg.className = 'flash-overlay-img';
         
